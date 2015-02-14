@@ -1,4 +1,4 @@
-Roolr
+Roolr [![Build Status](https://travis-ci.org/esarbanis/roolr.svg?branch=master)](https://travis-ci.org/esarbanis/roolr)
 =========
 
 Roolr is a very simple and lightweight business rule engine, with no dependencies, designed to be 
