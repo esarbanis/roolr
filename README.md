@@ -8,7 +8,7 @@ rules.
 Example
 -------
 
-The project's [test case](src/test/java/io/github/esarbanis/roolr/SchoolRulesTest) is of a real 
+The project's [test case](src/test/java/io/github/esarbanis/roolr/SchoolRulesTest.java) is of a real
 world domain and can be used as a reference of its use.
 
 For example, say you develop an application for a school and you want to make sure that only 
