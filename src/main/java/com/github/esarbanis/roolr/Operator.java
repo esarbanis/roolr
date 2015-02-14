@@ -85,7 +85,7 @@ public enum Operator {
   public boolean isValid(Value left, Value right) {
     if (!left.getClass().equals(right.getClass())) {
       throw new IllegalArgumentException(String.format("Cannot compare %s with %s", left.getClass()
-          .getName(), right.getClass().getName()));
+          .getSimpleName(), right.getClass().getSimpleName()));
     }
     switch (this) {
       case IN:
