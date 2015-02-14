@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="Roolr : A very simple and lightweight business rule engine">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Roolr</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/esarbanis/roolr">View on GitHub</a>
+
+          <h1 id="project_title">Roolr</h1>
+          <h2 id="project_tagline">A very simple and lightweight business rule engine</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/esarbanis/roolr/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/esarbanis/roolr/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a id="roolr" class="anchor" href="#roolr" aria-hidden="true"><span class="octicon octicon-link"></span></a>Roolr</h1>
+
+<p>Roolr is a very simple and lightweight business rule engine, with no dependencies, designed to be 
+easily embedded in any application (mobile, web, desktop) which needs to enforce complex business 
+rules.</p>
+
+<h2>
+<a id="example" class="anchor" href="#example" aria-hidden="true"><span class="octicon octicon-link"></span></a>Example</h2>
+
+<p>The project's <a href="src/test/java/io/github/esarbanis/roolr/SchoolRulesTest">test case</a> is of a real 
+world domain and can be used as a reference of its use.</p>
+
+<p>For example, say you develop an application for a school and you want to make sure that only 
+students of the correct age are enrolled. You can construct the following roolr engine.</p>
+
+<div class="highlight highlight-java"><pre><span class="pl-stj">StringOutcome</span> defaultOutcome <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-stj">StringOutcome</span>(<span class="pl-c1">STUDENT_OK</span>);
+<span class="pl-st">List&lt;<span class="pl-st">Rule&lt;<span class="pl-stj">String</span>&gt;</span>&gt;</span> rules <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-st">ArrayList&lt;&gt;</span>();
+<span class="pl-stj">Rule</span> theStudentIsOfSchoolAgeRule <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-st">Rule&lt;&gt;</span>(group(
+                                                    when()
+                                                    .field(<span class="pl-s1"><span class="pl-pds">"</span>student.age<span class="pl-pds">"</span></span>)<span class="pl-k">.</span>is(<span class="pl-c1">LT</span>)<span class="pl-k">.</span>to(number(<span class="pl-c1">6.0</span>))
+                                                    .or()
+                                                    .field(<span class="pl-s1"><span class="pl-pds">"</span>student.age<span class="pl-pds">"</span></span>)<span class="pl-k">.</span>is(<span class="pl-c1">GT</span>)<span class="pl-k">.</span>to(number(<span class="pl-c1">18.0</span>))<span class="pl-k">.</span>ok()
+                                                    )<span class="pl-k">.</span>ok(),
+                                              <span class="pl-k">new</span> <span class="pl-stj">StringOutcome</span>(<span class="pl-c1">NOT_IN_SCHOOL_AGE</span>));
+rules<span class="pl-k">.</span>add(theStudentIsOfSchoolAgeRule);
+<span class="pl-stj">Roolr</span> roolr <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-st">Roolr&lt;&gt;</span>(rules, defaultOutcome);</pre></div>
+
+<p>When a student of age 20 tries to enroll then roolr will decide a NOT_IN_SCHOOL_AGE outcome</p>
+
+<div class="highlight highlight-java"><pre><span class="pl-st">Map&lt;<span class="pl-stj">String</span>, <span class="pl-stj">Object</span>&gt;</span> fieldValues <span class="pl-k">=</span> <span class="pl-stj">Student</span><span class="pl-k">.</span>with()<span class="pl-k">.</span>age(<span class="pl-c1">20.0</span>)<span class="pl-k">.</span>thatsIt();
+
+assertEquals(<span class="pl-c1">NOT_IN_SCHOOL_AGE</span>, roolr<span class="pl-k">.</span>decide(<span class="pl-k">new</span> <span class="pl-stj">SimpleEvaluationContext</span>(fieldValues))<span class="pl-k">.</span>getOutput());</pre></div>
+
+<h2>
+<a id="evaluation-contexts" class="anchor" href="#evaluation-contexts" aria-hidden="true"><span class="octicon octicon-link"></span></a>Evaluation Contexts</h2>
+
+<p>Right now only <code>SimpleEvaluationContext</code> is provided by roolr, that takes field/value pairs as a <code>Map</code>.</p>
+
+<p>But you can always use your own implementation of <code>EvaluationContext</code> interface.</p>
+
+<h2>
+<a id="outcomes" class="anchor" href="#outcomes" aria-hidden="true"><span class="octicon octicon-link"></span></a>Outcomes</h2>
+
+<p>Right now only <code>StringOutcome</code> is provided by roolr, that provides decisions in <code>String</code>.</p>
+
+<p>But you can always use your own implementation of <code>Outcome</code> interface.</p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Roolr maintained by <a href="https://github.com/esarbanis">esarbanis</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-11189644-3");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+
+  </body>
+</html>
