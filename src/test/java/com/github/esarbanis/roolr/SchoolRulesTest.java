@@ -55,7 +55,7 @@ public class SchoolRulesTest {
 
     @Test
     public void testStudentTooOld() throws Exception {
-        Map<String, Object> fieldValues = Student.with().age(20.0).thatsIt();
+        Map<String, Object> fieldValues = Student.with().age(20.0).averageGrade(5.0).absences(0.0).thatsIt();
 
         assertEquals(NOT_IN_SCHOOL_AGE, roolr.decide(new SimpleEvaluationContext(fieldValues)).getOutput());
     }

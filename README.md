@@ -17,12 +17,10 @@ students of the correct age are enrolled. You can construct the following roolr 
 ```java
 StringOutcome defaultOutcome = new StringOutcome(STUDENT_OK);
 List<Rule<String>> rules = new ArrayList<>();
-Rule theStudentIsOfSchoolAgeRule = new Rule<>(group(
-                                                    when()
-                                                    .field("student.age").is(LT).to(number(6.0))
-                                                    .or()
-                                                    .field("student.age").is(GT).to(number(18.0)).ok()
-                                                    ).ok(),
+Rule theStudentIsOfSchoolAgeRule = new Rule<>(ExpressionBuilder.when()
+                                                           .field("student.age").lessThan(Values.number(6.0))
+                                                           .or()
+                                                           .field("student.age").greaterThan(Values.number(18.0)).ok(),
                                               new StringOutcome(NOT_IN_SCHOOL_AGE));
 rules.add(theStudentIsOfSchoolAgeRule);
 Roolr roolr = new Roolr<>(rules, defaultOutcome);
