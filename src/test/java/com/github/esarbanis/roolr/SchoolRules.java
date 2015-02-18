@@ -24,7 +24,10 @@
 
 package com.github.esarbanis.roolr;
 
+import com.github.esarbanis.roolr.expression.ExpressionBuilder;
 import com.github.esarbanis.roolr.value.Values;
+
+import java.lang.reflect.InvocationTargetException;
 
 /**
  * @author <a href="mailto:e.sarbanis@gmail.com">Efthymios Sarmpanis</a>
@@ -35,34 +38,26 @@ public class SchoolRules {
     public static final String FAILING_GRADE = "FAILING_GRADE";
     public static final String FAILING_ABSENCES = "FAILING_ABSENCES";
 
-    public static Rule<String> theStudentIsOfSchoolAge() {
-        return new Rule<>(PredicateGroupBuilder.group(
-                PredicateBuilder.when()
-                        .field("student.age").is(Operator.LT).to(Values.number(6.0))
+    public static Rule<String> theStudentIsOfSchoolAge() throws NoSuchMethodException, IllegalAccessException, InstantiationException, InvocationTargetException {
+        return new Rule<>(ExpressionBuilder.when()
+                        .field("student.age").lessThan(Values.number(6.0))
                         .or()
-                        .field("student.age").is(Operator.GT).to(Values.number(18.0)).ok()
-        ).ok(),
-                new StringOutcome(NOT_IN_SCHOOL_AGE));
+                        .field("student.age").greaterThan(Values.number(18.0)).ok(),
+                        new StringOutcome(NOT_IN_SCHOOL_AGE));
         
     }
     
-    public static Rule<String> theStudentFailForAverageGrade() {
-        return new Rule<>(PredicateGroupBuilder.group(
-                PredicateBuilder.when()
-                        .field("student.averageGrade").is(Operator.LT).to(Values.number(5.0))
-                        .ok()
-        ).ok(),
-                new StringOutcome(FAILING_GRADE));
+    public static Rule<String> theStudentFailForAverageGrade() throws IllegalAccessException, InstantiationException, InvocationTargetException {
+        return new Rule<>(ExpressionBuilder.when()
+                        .field("student.averageGrade").lessThan(Values.number(5.0)).ok(),
+                        new StringOutcome(FAILING_GRADE));
         
     }
     
-    public static Rule<String> theStudentFailForAbsences() {
-        return new Rule<>(PredicateGroupBuilder.group(
-                PredicateBuilder.when()
-                        .field("student.absences").is(Operator.GT).to(Values.number(30.0))
-                        .ok()
-        ).ok(),
-                new StringOutcome(FAILING_ABSENCES));
+    public static Rule<String> theStudentFailForAbsences() throws IllegalAccessException, InstantiationException, InvocationTargetException {
+        return new Rule<>(ExpressionBuilder.when()
+                        .field("student.absences").greaterThan(Values.number(30.0)).ok(),
+                        new StringOutcome(FAILING_ABSENCES));
         
     }
 }

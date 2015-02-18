@@ -21,8 +21,10 @@
 
 package com.github.esarbanis.roolr;
 
+import com.github.esarbanis.roolr.expression.Expression;
+
 /**
- * Rule contains a {@link PredicateGroup} short circuit chain, to evaluate
+ * Rule contains an {@link Expression} to evaluate
  * against the provided {@link EvaluationContext}.
  * <p/>
  * If the evaluation passes the provided {@link Outcome} will be returned.
@@ -31,32 +33,32 @@ package com.github.esarbanis.roolr;
  */
 public class Rule<T> {
 
-  private final PredicateGroup predicateGroup;
+  private final Expression ruleExpression;
   private final Outcome<T> outcome;
 
   /**
    * Constructs a {@link Rule} with a given
-   * {@link PredicateGroup} chain and a given
+   * {@link Expression} chain and a given
    * {@link Outcome}
    * 
-   * @param predicateGroup A {@link PredicateGroup} short circuit chain
+   * @param ruleExpression A {@link Expression} to be evaluated
    * @param outcome THe {@link Outcome} to be returned if this rule holds.
    */
-  public Rule(PredicateGroup predicateGroup, Outcome<T> outcome) {
-    this.predicateGroup = predicateGroup;
+  public Rule(Expression ruleExpression, Outcome<T> outcome) {
+    this.ruleExpression = ruleExpression;
     this.outcome = outcome;
   }
 
   /**
    * Will run the {@link EvaluationContext} against the
-   * {@link PredicateGroup} chain and will return the provided
+   * {@link Expression} and will return the provided
    * {@link Outcome} in case it's evaluated successfully.
    * 
    * @param context The context to be evaluated
    * @return The outcome of the evaluation
    */
   public Outcome<T> apply(EvaluationContext context) {
-    if (predicateGroup.evaluate(context)) {
+    if (ruleExpression.evaluate(context)) {
       return outcome;
     }
     return null;
@@ -76,7 +78,7 @@ public class Rule<T> {
 
     Rule that = (Rule) other;
 
-    return outcome.equals(that.outcome) && predicateGroup.equals(that.predicateGroup);
+    return outcome.equals(that.outcome) && ruleExpression.equals(that.ruleExpression);
 
   }
 
@@ -85,7 +87,7 @@ public class Rule<T> {
    */
   @Override
   public int hashCode() {
-    int result = predicateGroup.hashCode();
+    int result = ruleExpression.hashCode();
     result = 31 * result + outcome.hashCode();
     return result;
   }
