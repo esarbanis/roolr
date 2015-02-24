@@ -28,12 +28,10 @@ import com.github.esarbanis.roolr.value.ArrayValue;
 import com.github.esarbanis.roolr.value.NumberValue;
 import com.github.esarbanis.roolr.value.Value;
 
-import java.lang.reflect.InvocationTargetException;
-
 /**
  * @author <a href="mailto:e.sarbanis@gmail.com">Efthymis Sarmpanis</a>
  */
-public class ExpressionBuilder {
+public final class ExpressionBuilder {
 
     private ExpressionObject current;
     private String fieldName;
@@ -52,65 +50,37 @@ public class ExpressionBuilder {
     }
 
     public ExpressionBuilder lessThan(NumberValue number) {
-        try {
-            current.addExpression(new LessThan(fieldName, number));
-        } catch (IllegalAccessException | InvocationTargetException | InstantiationException e) {
-            e.printStackTrace();
-        }
+        current.addExpression(new LessThan(fieldName, number));
         return this;
     }
 
     public ExpressionBuilder greaterThan(NumberValue number) {
-        try {
-            current.addExpression(new GreaterThan(fieldName, number));
-        } catch (IllegalAccessException | InvocationTargetException | InstantiationException e) {
-            e.printStackTrace();
-        }
+        current.addExpression(new GreaterThan(fieldName, number));
         return this;
     }
 
     public ExpressionBuilder lessThanOrEquals(NumberValue number) {
-        try {
-            current.addExpression(new LessThanEquals(fieldName, number));
-        } catch (IllegalAccessException | InvocationTargetException | InstantiationException e) {
-            e.printStackTrace();
-        }
+        current.addExpression(new LessThanEquals(fieldName, number));
         return this;
     }
 
     public ExpressionBuilder greaterThanOrEquals(NumberValue number) {
-        try {
-            current.addExpression(new GreaterThanEquals(fieldName, number));
-        } catch (IllegalAccessException | InvocationTargetException | InstantiationException e) {
-            e.printStackTrace();
-        }
+        current.addExpression(new GreaterThanEquals(fieldName, number));
         return this;
     }
 
     public ExpressionBuilder like(Value value) {
-        try {
-            current.addExpression(new Like(fieldName, value));
-        } catch (IllegalAccessException | InvocationTargetException | InstantiationException e) {
-            e.printStackTrace();
-        }
+        current.addExpression(new Like(fieldName, value));
         return this;
     }
 
     public ExpressionBuilder equals(Value value) {
-        try {
-            current.addExpression(new Equals(fieldName, value));
-        } catch (IllegalAccessException | InvocationTargetException | InstantiationException e) {
-            e.printStackTrace();
-        }
+        current.addExpression(new Equals(fieldName, value));
         return this;
     }
 
     public ExpressionBuilder in(ArrayValue<?> value) {
-        try {
-            current.addExpression(new In(fieldName, value));
-        } catch (IllegalAccessException | InvocationTargetException | InstantiationException e) {
-            e.printStackTrace();
-        }
+        current.addExpression(new In(fieldName, value));
         return this;
     }
 
@@ -124,7 +94,7 @@ public class ExpressionBuilder {
         return this;
     }
 
-    public Expression ok() throws IllegalAccessException, InvocationTargetException, InstantiationException {
+    public Expression ok() {
         return current.left;
     }
 
@@ -134,7 +104,7 @@ public class ExpressionBuilder {
         private Expression right;
         private Join join;
 
-        private void addExpression(Operator expression) throws IllegalAccessException, InvocationTargetException, InstantiationException {
+        private void addExpression(Operator expression) {
             if (current.left == null) {
                 current.left = expression;
             } else {
@@ -143,7 +113,7 @@ public class ExpressionBuilder {
             }
         }
 
-        private void reset() throws InstantiationException, IllegalAccessException, InvocationTargetException {
+        private void reset() {
             if (current.join != null) {
                 addJoinExpression(current.join);
                 current.right = null;
@@ -157,6 +127,7 @@ public class ExpressionBuilder {
                     current.left = new And(current.left, current.right);
                     break;
                 case OR:
+                default:
                     current.left = new Or(current.left, current.right);
             }
         }
