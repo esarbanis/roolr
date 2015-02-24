@@ -24,16 +24,16 @@
 
 package com.github.esarbanis.roolr.expression;
 
-import com.github.esarbanis.roolr.value.ArrayValue;
+import com.github.esarbanis.roolr.value.Value;
 
 /**
- * Tests whether the first {@link com.github.esarbanis.roolr.value.Value} is included 
- * in the second {@link com.github.esarbanis.roolr.value.ArrayValue}
+ * Tests whether the {@link com.github.esarbanis.roolr.value.Value} matches 
+ * the second {@link com.github.esarbanis.roolr.value.StringValue}, for a given pattern
  * @author <a href="mailto:e.sarbanis@gmail.com">Efthymis Sarmpanis</a>
  */
-public class InExpression extends OperatorExpression {
+public class Like extends Operator {
 
-    protected InExpression(String fieldName, ArrayValue comparisonValue) {
+    protected Like(String fieldName, Value comparisonValue) {
         super(fieldName, comparisonValue);
     }
 

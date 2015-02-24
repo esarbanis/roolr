@@ -24,23 +24,18 @@
 
 package com.github.esarbanis.roolr.expression;
 
-import com.github.esarbanis.roolr.value.NumberValue;
-
 /**
- * Tests whether the first {@link com.github.esarbanis.roolr.value.Value} is greater or equals 
- * to the second {@link com.github.esarbanis.roolr.value.Value}.
+ * Joins two expressions.
+ * <p/>
+ * Should be used to combine expressions together to form a rule.
  * @author <a href="mailto:e.sarbanis@gmail.com">Efthymis Sarmpanis</a>
  */
-public class GreaterThanEqualsExpression extends OperatorExpression {
+public abstract class Join implements Expression {
+    protected final Expression left;
+    protected final Expression right;
 
-    protected GreaterThanEqualsExpression(String fieldName, NumberValue comparisonValue) {
-        super(fieldName, comparisonValue);
+    protected Join(Expression left, Expression right) {
+        this.left = left;
+        this.right = right;
     }
-
-    @Override
-    protected boolean doEvaluate(int comparison) {
-        return comparison >= 0;
-    }
-
-
 }

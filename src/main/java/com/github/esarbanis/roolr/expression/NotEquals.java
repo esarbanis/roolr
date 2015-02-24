@@ -27,18 +27,17 @@ package com.github.esarbanis.roolr.expression;
 import com.github.esarbanis.roolr.value.Value;
 
 /**
- * Tests whether the {@link com.github.esarbanis.roolr.value.Value} matches 
- * the second {@link com.github.esarbanis.roolr.value.StringValue}, for a given pattern
+ * Tests whether two {@link com.github.esarbanis.roolr.value.Value}s are not equal.
  * @author <a href="mailto:e.sarbanis@gmail.com">Efthymis Sarmpanis</a>
  */
-public class LikeExpression extends OperatorExpression {
+public class NotEquals extends Operator {
 
-    protected LikeExpression(String fieldName, Value comparisonValue) {
+    protected NotEquals(String fieldName, Value comparisonValue) {
         super(fieldName, comparisonValue);
     }
 
     @Override
     protected boolean doEvaluate(int comparison) {
-        return comparison == 0;
+        return comparison != 0;
     }
 }

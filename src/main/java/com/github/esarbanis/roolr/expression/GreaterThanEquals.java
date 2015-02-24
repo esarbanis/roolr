@@ -27,18 +27,20 @@ package com.github.esarbanis.roolr.expression;
 import com.github.esarbanis.roolr.value.NumberValue;
 
 /**
- * Tests whether the first {@link com.github.esarbanis.roolr.value.Value} is less or equals 
+ * Tests whether the first {@link com.github.esarbanis.roolr.value.Value} is greater or equals 
  * to the second {@link com.github.esarbanis.roolr.value.Value}.
  * @author <a href="mailto:e.sarbanis@gmail.com">Efthymis Sarmpanis</a>
  */
-public class LessThanEqualsExpression extends OperatorExpression {
+public class GreaterThanEquals extends Operator {
 
-    protected LessThanEqualsExpression(String fieldName, NumberValue comparisonValue) {
+    protected GreaterThanEquals(String fieldName, NumberValue comparisonValue) {
         super(fieldName, comparisonValue);
     }
 
     @Override
     protected boolean doEvaluate(int comparison) {
-        return comparison <= 0;
+        return comparison >= 0;
     }
+
+
 }

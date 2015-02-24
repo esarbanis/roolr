@@ -34,12 +34,12 @@ import com.github.esarbanis.roolr.value.Value;
  * Base class for Conditional expressions.
  * @author <a href="mailto:e.sarbanis@gmail.com">Efthymis Sarmpanis</a>
  */
-public abstract class OperatorExpression implements Expression {
+public abstract class Operator implements Expression {
 
     private final String fieldName;
     private final Value comparisonValue;
 
-    protected OperatorExpression(String fieldName, Value comparisonValue) {
+    protected Operator(String fieldName, Value comparisonValue) {
         this.fieldName = fieldName;
         this.comparisonValue = comparisonValue;
     }

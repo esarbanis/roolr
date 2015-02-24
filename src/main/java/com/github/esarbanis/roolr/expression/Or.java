@@ -24,20 +24,22 @@
 
 package com.github.esarbanis.roolr.expression;
 
-import com.github.esarbanis.roolr.value.Value;
+import com.github.esarbanis.roolr.EvaluationContext;
 
 /**
- * Tests whether two {@link com.github.esarbanis.roolr.value.Value}s are equal.
+ * Joins two expressions.
+ * <p/>
+ * Should break the evaluation with <code>true</code>, if the left side is false.
  * @author <a href="mailto:e.sarbanis@gmail.com">Efthymis Sarmpanis</a>
  */
-public class EqualsExpression extends OperatorExpression {
+public class Or extends Join {
 
-    protected EqualsExpression(String fieldName, Value comparisonValue) {
-        super(fieldName, comparisonValue);
+    public Or(Expression left, Expression right) {
+        super(left, right);
     }
 
     @Override
-    protected boolean doEvaluate(int comparison) {
-        return comparison == 0;
+    public boolean evaluate(EvaluationContext context) {
+        return left.evaluate(context) || right.evaluate(context);
     }
 }

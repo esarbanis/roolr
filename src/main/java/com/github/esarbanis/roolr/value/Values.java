@@ -35,7 +35,7 @@ public class Values {
   /**
    * Creates a {@link StringValue} out of the given
    * {@link java.lang.String}
-   * 
+   *
    * @param string the {@link java.lang.String} to be wrapped
    * @return the wrapped {@link java.lang.String}
    */
@@ -57,7 +57,7 @@ public class Values {
   /**
    * Creates a {@link NumberValue} out of the given
    * {@link java.lang.Double}
-   * 
+   *
    * @param number the {@link java.lang.Double} to be wrapped
    * @return the wrapped {@link java.lang.Double}
    */

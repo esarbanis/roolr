@@ -32,7 +32,7 @@ public interface Value extends Serializable, Comparable<Value> {
   /**
    * The representation of this {@link Value} as a
    * {@link java.lang.String}
-   * 
+   *
    * @return The {@link Value} represented as a
    *         {@link java.lang.String}
    */
