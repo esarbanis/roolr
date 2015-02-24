@@ -28,7 +28,7 @@ import com.github.esarbanis.roolr.value.NumberValue;
 
 /**
  * Tests whether the first {@link com.github.esarbanis.roolr.value.Value} is less 
- * * to the second {@link com.github.esarbanis.roolr.value.Value}.
+ * to the second {@link com.github.esarbanis.roolr.value.Value}.
  * @author <a href="mailto:e.sarbanis@gmail.com">Efthymis Sarmpanis</a>
  */
 public class LessThan extends Operator {

@@ -37,7 +37,7 @@ public class SimpleEvaluationContext implements EvaluationContext {
 
   /**
    * Constructs an {@link EvaluationContext} out of the given
-   * {@link java.util.Map} 
+   * {@link java.util.Map}
    * @param fieldValues a map of field/value pairs
    */
   public SimpleEvaluationContext(Map<String, Object> fieldValues) {

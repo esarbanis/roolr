@@ -28,7 +28,7 @@ import com.github.esarbanis.roolr.expression.Expression;
  * against the provided {@link EvaluationContext}.
  * <p/>
  * If the evaluation passes the provided {@link Outcome} will be returned.
- * 
+ *
  * @author <a href="mailto:e.sarbanis@gmail.com">Efthymios Sarmpanis</a>
  */
 public class Rule<T> {
@@ -40,7 +40,7 @@ public class Rule<T> {
    * Constructs a {@link Rule} with a given
    * {@link Expression} chain and a given
    * {@link Outcome}
-   * 
+   *
    * @param ruleExpression A {@link Expression} to be evaluated
    * @param outcome THe {@link Outcome} to be returned if this rule holds.
    */
