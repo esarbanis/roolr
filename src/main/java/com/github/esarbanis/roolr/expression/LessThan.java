@@ -24,22 +24,21 @@
 
 package com.github.esarbanis.roolr.expression;
 
-import com.github.esarbanis.roolr.EvaluationContext;
+import com.github.esarbanis.roolr.value.NumberValue;
 
 /**
- * Joins two expressions.
- * <p/>
- * Should break the evaluation with <code>false</code>, if the left side is false.
+ * Tests whether the first {@link com.github.esarbanis.roolr.value.Value} is less 
+ * * to the second {@link com.github.esarbanis.roolr.value.Value}.
  * @author <a href="mailto:e.sarbanis@gmail.com">Efthymis Sarmpanis</a>
  */
-public class AndExpression extends JoinExpression {
+public class LessThan extends Operator {
 
-    public AndExpression(Expression left, Expression right) {
-        super(left, right);
+    protected LessThan(String fieldName, NumberValue comparisonValue) {
+        super(fieldName, comparisonValue);
     }
 
     @Override
-    public boolean evaluate(EvaluationContext context) {
-        return left.evaluate(context) && right.evaluate(context);
+    protected boolean doEvaluate(int comparison) {
+        return comparison < 0;
     }
 }

@@ -24,18 +24,20 @@
 
 package com.github.esarbanis.roolr.expression;
 
+import com.github.esarbanis.roolr.value.Value;
+
 /**
- * Joins two expressions.
- * <p/>
- * Should be used to combine expressions together to form a rule.
+ * Tests whether two {@link com.github.esarbanis.roolr.value.Value}s are equal.
  * @author <a href="mailto:e.sarbanis@gmail.com">Efthymis Sarmpanis</a>
  */
-public abstract class JoinExpression implements Expression {
-    protected final Expression left;
-    protected final Expression right;
+public class Equals extends Operator {
 
-    protected JoinExpression(Expression left, Expression right) {
-        this.left = left;
-        this.right = right;
+    protected Equals(String fieldName, Value comparisonValue) {
+        super(fieldName, comparisonValue);
+    }
+
+    @Override
+    protected boolean doEvaluate(int comparison) {
+        return comparison == 0;
     }
 }

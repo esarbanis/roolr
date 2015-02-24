@@ -24,20 +24,21 @@
 
 package com.github.esarbanis.roolr.expression;
 
-import com.github.esarbanis.roolr.value.Value;
+import com.github.esarbanis.roolr.value.NumberValue;
 
 /**
- * Tests whether two {@link com.github.esarbanis.roolr.value.Value}s are not equal.
+ * Tests whether the first {@link com.github.esarbanis.roolr.value.Value} is greater 
+ * to the second {@link com.github.esarbanis.roolr.value.Value}.
  * @author <a href="mailto:e.sarbanis@gmail.com">Efthymis Sarmpanis</a>
  */
-public class NotEqualsExpression extends OperatorExpression {
+public class GreaterThan extends Operator {
 
-    protected NotEqualsExpression(String fieldName, Value comparisonValue) {
+    protected GreaterThan(String fieldName, NumberValue comparisonValue) {
         super(fieldName, comparisonValue);
     }
 
     @Override
     protected boolean doEvaluate(int comparison) {
-        return comparison != 0;
+        return comparison > 0;
     }
 }

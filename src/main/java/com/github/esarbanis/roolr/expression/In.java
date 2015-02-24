@@ -24,21 +24,21 @@
 
 package com.github.esarbanis.roolr.expression;
 
-import com.github.esarbanis.roolr.value.NumberValue;
+import com.github.esarbanis.roolr.value.ArrayValue;
 
 /**
- * Tests whether the first {@link com.github.esarbanis.roolr.value.Value} is less 
- * * to the second {@link com.github.esarbanis.roolr.value.Value}.
+ * Tests whether the first {@link com.github.esarbanis.roolr.value.Value} is included 
+ * in the second {@link com.github.esarbanis.roolr.value.ArrayValue}
  * @author <a href="mailto:e.sarbanis@gmail.com">Efthymis Sarmpanis</a>
  */
-public class LessThanExpression extends OperatorExpression {
+public class In extends Operator {
 
-    protected LessThanExpression(String fieldName, NumberValue comparisonValue) {
+    protected In(String fieldName, ArrayValue comparisonValue) {
         super(fieldName, comparisonValue);
     }
 
     @Override
     protected boolean doEvaluate(int comparison) {
-        return comparison < 0;
+        return comparison == 0;
     }
 }

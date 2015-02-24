@@ -24,21 +24,22 @@
 
 package com.github.esarbanis.roolr.expression;
 
-import com.github.esarbanis.roolr.value.NumberValue;
+import com.github.esarbanis.roolr.EvaluationContext;
 
 /**
- * Tests whether the first {@link com.github.esarbanis.roolr.value.Value} is greater 
- * to the second {@link com.github.esarbanis.roolr.value.Value}.
+ * Joins two expressions.
+ * <p/>
+ * Should break the evaluation with <code>false</code>, if the left side is false.
  * @author <a href="mailto:e.sarbanis@gmail.com">Efthymis Sarmpanis</a>
  */
-public class GreaterThanExpression extends OperatorExpression {
+public class And extends Join {
 
-    protected GreaterThanExpression(String fieldName, NumberValue comparisonValue) {
-        super(fieldName, comparisonValue);
+    public And(Expression left, Expression right) {
+        super(left, right);
     }
 
     @Override
-    protected boolean doEvaluate(int comparison) {
-        return comparison > 0;
+    public boolean evaluate(EvaluationContext context) {
+        return left.evaluate(context) && right.evaluate(context);
     }
 }
