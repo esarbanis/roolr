@@ -25,27 +25,28 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * An array value wrapper used when evaluating a {@link com.github.esarbanis.roolr.Predicate}
- * expression.
+ * An array value wrapper used when evaluating a {@link com.github.esarbanis.roolr.expression.Expression
+ * expression}.
+ *
  * @author <a href="mailto:e.sarbanis@gmail.com">Efthymios Sarmpanis</a>
  */
 public abstract class ArrayValue<T> implements Value {
 
-  public abstract List<T> getArray();
+    public abstract List<T> getArray();
 
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  public int compareTo(Value value) {
-    return -1;
-  }
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public int compareTo(Value value) {
+        return -1;
+    }
 
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  public String getRepresentation() {
-    return Arrays.toString(getArray().toArray()).replace("[", "").replace("]", "");
-  }
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public String getRepresentation() {
+        return Arrays.toString(getArray().toArray()).replace("[", "").replace("]", "");
+    }
 }

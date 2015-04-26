@@ -24,7 +24,9 @@ package com.github.esarbanis.roolr.value;
 import java.io.Serializable;
 
 /**
- * A value wrapper used when evaluating a {@link com.github.esarbanis.roolr.Predicate} expression.
+ * A value wrapper used when evaluating a {@link com.github.esarbanis.roolr.expression.Expression
+ * expression}.
+ *
  * @author <a href="mailto:e.sarbanis@gmail.com">Efthymios Sarmpanis</a>
  */
 public interface Value extends Serializable, Comparable<Value> {

@@ -25,7 +25,7 @@ import java.util.List;
 
 /**
  * A {@link java.lang.String} array value wrapper used when evaluating
- * a {@link com.github.esarbanis.roolr.Predicate} expression.
+ * a {@link com.github.esarbanis.roolr.expression.Expression expression}.
  * @author <a href="mailto:e.sarbanis@gmail.com">Efthymios Sarmpanis</a>
  */
 public class StringArrayValue extends ArrayValue<String> {

@@ -23,7 +23,7 @@ package com.github.esarbanis.roolr.value;
 
 /**
  * A {@link java.lang.String} value wrapper used when evaluating
- * a {@link com.github.esarbanis.roolr.Predicate} expression.
+ * a {@link com.github.esarbanis.roolr.expression.Expression expression}.
  * @author <a href="mailto:e.sarbanis@gmail.com">Efthymios Sarmpanis</a>
  */
 public class StringValue implements Value {
