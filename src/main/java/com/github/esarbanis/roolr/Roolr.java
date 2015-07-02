@@ -48,7 +48,7 @@ public class Roolr<T> {
    * @param context the {@link EvaluationContext context} of the
    *        evaluation.
    * @return the resolved {@link Outcome} of the rule list evaluation.
-   * @throws EvaluationException
+   * @throws EvaluationException Thrown when the evaluation has failed, wrapping the original exception.
    */
   public Outcome<T> decide(EvaluationContext context) throws EvaluationException {
     Outcome<T> outcome = null;

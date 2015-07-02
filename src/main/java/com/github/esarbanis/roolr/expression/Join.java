@@ -26,8 +26,9 @@ package com.github.esarbanis.roolr.expression;
 
 /**
  * Joins two expressions.
- * <p/>
+ * <p>
  * Should be used to combine expressions together to form a rule.
+ * </p>
  * @author <a href="mailto:e.sarbanis@gmail.com">Efthymis Sarmpanis</a>
  */
 public abstract class Join implements Expression {

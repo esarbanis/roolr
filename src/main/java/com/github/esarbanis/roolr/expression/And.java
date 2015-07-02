@@ -28,8 +28,9 @@ import com.github.esarbanis.roolr.EvaluationContext;
 
 /**
  * Joins two expressions.
- * <p/>
+ * <p>
  * Should break the evaluation with <code>false</code>, if the left side is false.
+ * </p>
  * @author <a href="mailto:e.sarbanis@gmail.com">Efthymis Sarmpanis</a>
  */
 public class And extends Join {

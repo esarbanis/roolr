@@ -34,7 +34,7 @@ public class StringOutcome implements Outcome<String> {
    * Constructs an {@link Outcome} out of the given
    * {@link java.lang.String}
    * 
-   * @param output
+   * @param output the String representation of the outcome.
    */
   public StringOutcome(String output) {
     this.output = output;

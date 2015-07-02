@@ -25,10 +25,10 @@ import java.util.Map;
 
 /**
  * This type of {@link EvaluationContext} is the simplest possible.
- * <p/>
+ * <p>
  * It uses a {@link java.util.Map} to store the field/value pairs. The field is represented as a
  * {@link String} using the JavaBeans notation.
- * 
+ * </p>
  * @author <a href="mailto:e.sarbanis@gmail.com">Efthymios Sarmpanis</a>
  */
 public class SimpleEvaluationContext implements EvaluationContext {

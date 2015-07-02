@@ -26,9 +26,9 @@ import com.github.esarbanis.roolr.expression.Expression;
 /**
  * Rule contains an {@link Expression} to evaluate
  * against the provided {@link EvaluationContext}.
- * <p/>
+ * <p>
  * If the evaluation passes the provided {@link Outcome} will be returned.
- *
+ * </p>
  * @author <a href="mailto:e.sarbanis@gmail.com">Efthymios Sarmpanis</a>
  */
 public class Rule<T> {
