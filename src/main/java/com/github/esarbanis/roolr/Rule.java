@@ -34,7 +34,7 @@ import com.github.esarbanis.roolr.expression.Expression;
 public class Rule<T> {
 
   private final Expression ruleExpression;
-  private final Outcome<T> outcome;
+  private final T outcome;
 
   /**
    * Constructs a {@link Rule} with a given
@@ -44,7 +44,7 @@ public class Rule<T> {
    * @param ruleExpression A {@link Expression} to be evaluated
    * @param outcome THe {@link Outcome} to be returned if this rule holds.
    */
-  public Rule(Expression ruleExpression, Outcome<T> outcome) {
+  public Rule(Expression ruleExpression, T outcome) {
     this.ruleExpression = ruleExpression;
     this.outcome = outcome;
   }
@@ -57,7 +57,7 @@ public class Rule<T> {
    * @param context The context to be evaluated
    * @return The outcome of the evaluation
    */
-  public Outcome<T> apply(EvaluationContext context) {
+  public T apply(EvaluationContext context) {
     if (ruleExpression.evaluate(context)) {
       return outcome;
     }

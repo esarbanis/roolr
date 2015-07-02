@@ -39,7 +39,6 @@ public class SchoolRulesTest {
 
     public static final String STUDENT_OK = "STUDENT_OK";
     private Roolr<String> roolr;
-    private StringOutcome defaultOutcome = Outcomes.string(STUDENT_OK);
 
     @Before
     public void setUp() throws Exception {
@@ -49,49 +48,49 @@ public class SchoolRulesTest {
         rules.add(theStudentFailForAverageGrade());
         rules.add(theStudentFailForAbsences());
 
-        roolr = new Roolr<>(rules, defaultOutcome);
+        roolr = new Roolr<>(rules, STUDENT_OK);
     }
 
     @Test
     public void testStudentTooOld() throws Exception {
         Map<String, Object> fieldValues = Student.with().age(20.0).averageGrade(5.0).absences(0.0).thatsIt();
 
-        assertEquals(NOT_IN_SCHOOL_AGE, roolr.decide(new SimpleEvaluationContext(fieldValues)).getOutput());
+        assertEquals(NOT_IN_SCHOOL_AGE, roolr.decide(new SimpleEvaluationContext(fieldValues)));
     }
     
     @Test
     public void testStudentTooYoung() throws Exception {
         Map<String, Object> fieldValues = Student.with().age(5.0).averageGrade(5.0).thatsIt();
 
-        assertEquals(NOT_IN_SCHOOL_AGE, roolr.decide(new SimpleEvaluationContext(fieldValues)).getOutput());
+        assertEquals(NOT_IN_SCHOOL_AGE, roolr.decide(new SimpleEvaluationContext(fieldValues)));
     }
     
     @Test
     public void testStudentInSchoolAge() throws Exception {
         Map<String, Object> fieldValues = Student.with().age(10.0).averageGrade(5.0).absences(0.0).thatsIt();
 
-        assertEquals(STUDENT_OK, roolr.decide(new SimpleEvaluationContext(fieldValues)).getOutput());
+        assertEquals(STUDENT_OK, roolr.decide(new SimpleEvaluationContext(fieldValues)));
     }
     
     @Test
     public void testStudentInFirstYear() throws Exception {
         Map<String, Object> fieldValues = Student.with().age(6.0).averageGrade(5.0).absences(0.0).thatsIt();
 
-        assertEquals(STUDENT_OK, roolr.decide(new SimpleEvaluationContext(fieldValues)).getOutput());
+        assertEquals(STUDENT_OK, roolr.decide(new SimpleEvaluationContext(fieldValues)));
     }
     
     @Test
     public void testStudentInLastYear() throws Exception {
         Map<String, Object> fieldValues = Student.with().age(18.0).averageGrade(5.0).absences(0.0).thatsIt();
 
-        assertEquals(STUDENT_OK, roolr.decide(new SimpleEvaluationContext(fieldValues)).getOutput());
+        assertEquals(STUDENT_OK, roolr.decide(new SimpleEvaluationContext(fieldValues)));
     }
     
     @Test
     public void testStudentHasFailingGrade() throws Exception {
         Map<String, Object> fieldValues = Student.with().age(18.0).averageGrade(4.0).thatsIt();
 
-        assertEquals(FAILING_GRADE, roolr.decide(new SimpleEvaluationContext(fieldValues)).getOutput());
+        assertEquals(FAILING_GRADE, roolr.decide(new SimpleEvaluationContext(fieldValues)));
     }
     
     @Test(expected = EvaluationException.class)
@@ -115,7 +114,7 @@ public class SchoolRulesTest {
     public void testStudentFailingAbsences() throws Exception {
         Map<String, Object> fieldValues = Student.with().age(18.0).averageGrade(6.0).absences(31).thatsIt();
 
-        assertEquals(FAILING_ABSENCES, roolr.decide(new SimpleEvaluationContext(fieldValues)).getOutput());
+        assertEquals(FAILING_ABSENCES, roolr.decide(new SimpleEvaluationContext(fieldValues)));
 
     }
 }

@@ -44,25 +44,25 @@ public class SchoolRules {
                         .field("student.age").lessThan(Values.number(6.0))
                         .or()
                         .field("student.age").greaterThan(Values.number(18.0)).ok(),
-                Outcomes.string(NOT_IN_SCHOOL_AGE));
+                NOT_IN_SCHOOL_AGE);
         
     }
 
     public static Rule<String> theStudentFailForAverageGrade() throws IllegalAccessException, InstantiationException, InvocationTargetException {
         return toRule(ExpressionBuilder.when()
                         .field("student.averageGrade").lessThan(Values.number(5.0)).ok(),
-                        Outcomes.string(FAILING_GRADE));
+                        FAILING_GRADE);
 
     }
 
     public static Rule<String> theStudentFailForAbsences() throws IllegalAccessException, InstantiationException, InvocationTargetException {
         return toRule(ExpressionBuilder.when()
                         .field("student.absences").greaterThan(Values.number(30.0)).ok(),
-                        Outcomes.string(FAILING_ABSENCES));
+                        FAILING_ABSENCES);
 
     }
 
-    private static Rule<String> toRule(Expression expression, StringOutcome outcome) {
+    private static Rule<String> toRule(Expression expression, String outcome) {
         return new Rule<>(expression, outcome);
     }
 }

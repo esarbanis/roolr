@@ -30,9 +30,9 @@ import java.util.Collection;
 public class Roolr<T> {
 
   private final Collection<Rule<T>> rules;
-  private final Outcome<T> defaultOutcome;
+  private final T defaultOutcome;
 
-  public Roolr(Collection<Rule<T>> rules, Outcome<T> defaultOutcome) {
+  public Roolr(Collection<Rule<T>> rules, T defaultOutcome) {
     this.rules = rules;
     this.defaultOutcome = defaultOutcome;
   }
@@ -50,8 +50,8 @@ public class Roolr<T> {
    * @return the resolved {@link Outcome} of the rule list evaluation.
    * @throws EvaluationException Thrown when the evaluation has failed, wrapping the original exception.
    */
-  public Outcome<T> decide(EvaluationContext context) throws EvaluationException {
-    Outcome<T> outcome = null;
+  public T decide(EvaluationContext context) throws EvaluationException {
+    T outcome = null;
     for (Rule<T> rule : rules) {
       try {
         if ((outcome = rule.apply(context)) != null) {

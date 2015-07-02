@@ -15,13 +15,13 @@ For example, say you develop an application for a school and you want to make su
 students of the correct age are enrolled. You can construct the following roolr engine.
  
 ```java
-StringOutcome defaultOutcome = new StringOutcome(STUDENT_OK);
+String defaultOutcome = "STUDENT_OK";
 List<Rule<String>> rules = new ArrayList<>();
 Rule theStudentIsOfSchoolAgeRule = new Rule<>(ExpressionBuilder.when()
                                                            .field("student.age").lessThan(Values.number(6.0))
                                                            .or()
                                                            .field("student.age").greaterThan(Values.number(18.0)).ok(),
-                                              new StringOutcome(NOT_IN_SCHOOL_AGE));
+                                              "NOT_IN_SCHOOL_AGE");
 rules.add(theStudentIsOfSchoolAgeRule);
 Roolr roolr = new Roolr<>(rules, defaultOutcome);
 ```
@@ -44,6 +44,4 @@ But you can always use your own implementation of `EvaluationContext` interface.
 Outcomes
 --------
 
-Right now only `StringOutcome` is provided by roolr, that provides decisions in `String`.
-
-But you can always use your own implementation of `Outcome` interface.
+The outcome of a decision is always the type the Roolr object was initialized with.
