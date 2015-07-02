@@ -52,7 +52,7 @@ public class Roolr<T> {
    */
   public Outcome<T> decide(EvaluationContext context) throws EvaluationException {
     Outcome<T> outcome = null;
-    for (Rule rule : rules) {
+    for (Rule<T> rule : rules) {
       try {
         if ((outcome = rule.apply(context)) != null) {
           break;
