@@ -38,26 +38,26 @@ public class SchoolRules {
     public static final String FAILING_GRADE = "FAILING_GRADE";
     public static final String FAILING_ABSENCES = "FAILING_ABSENCES";
 
-    public static Rule<String> theStudentIsOfSchoolAge() throws NoSuchMethodException, IllegalAccessException, InstantiationException, InvocationTargetException {
+    public static Rule<String> theStudentIsOfSchoolAge() throws NoSuchMethodException {
         return new Rule<>(ExpressionBuilder.when()
                         .field("student.age").lessThan(Values.number(6.0))
                         .or()
                         .field("student.age").greaterThan(Values.number(18.0)).ok(),
-                        new StringOutcome(NOT_IN_SCHOOL_AGE));
+                        Outcomes.string(NOT_IN_SCHOOL_AGE));
         
     }
     
     public static Rule<String> theStudentFailForAverageGrade() throws IllegalAccessException, InstantiationException, InvocationTargetException {
         return new Rule<>(ExpressionBuilder.when()
                         .field("student.averageGrade").lessThan(Values.number(5.0)).ok(),
-                        new StringOutcome(FAILING_GRADE));
+                        Outcomes.string(FAILING_GRADE));
         
     }
     
     public static Rule<String> theStudentFailForAbsences() throws IllegalAccessException, InstantiationException, InvocationTargetException {
         return new Rule<>(ExpressionBuilder.when()
                         .field("student.absences").greaterThan(Values.number(30.0)).ok(),
-                        new StringOutcome(FAILING_ABSENCES));
+                        Outcomes.string(FAILING_ABSENCES));
         
     }
 }

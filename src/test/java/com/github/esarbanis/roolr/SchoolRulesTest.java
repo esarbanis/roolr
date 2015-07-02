@@ -39,12 +39,11 @@ public class SchoolRulesTest {
 
     public static final String STUDENT_OK = "STUDENT_OK";
     private Roolr<String> roolr;
-    private StringOutcome defaultOutcome = new StringOutcome(STUDENT_OK);
+    private StringOutcome defaultOutcome = Outcomes.string(STUDENT_OK);
 
     @Before
     public void setUp() throws Exception {
         List<Rule<String>> rules = new ArrayList<>();
-
 
         rules.add(theStudentIsOfSchoolAge());
         rules.add(theStudentFailForAverageGrade());
