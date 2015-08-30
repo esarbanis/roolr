@@ -38,8 +38,8 @@ public class Roolr<T> {
   }
 
   /**
-   * Evaluates the {@link Rule} object list and resolves an
-   * {@link Outcome}.
+   * Evaluates the {@link Rule} object list and resolves a predefined
+   * type.
    * <p>
    * If the evaluation fails an {@link EvaluationException} will be
    * thrown.
@@ -47,7 +47,7 @@ public class Roolr<T> {
    *
    * @param context the {@link EvaluationContext context} of the
    *        evaluation.
-   * @return the resolved {@link Outcome} of the rule list evaluation.
+   * @return the resolved type of the rule list evaluation.
    * @throws EvaluationException Thrown when the evaluation has failed, wrapping the original exception.
    */
   public T decide(EvaluationContext context) throws EvaluationException {

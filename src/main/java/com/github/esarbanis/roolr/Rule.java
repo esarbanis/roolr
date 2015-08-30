@@ -27,7 +27,7 @@ import com.github.esarbanis.roolr.expression.Expression;
  * Rule contains an {@link Expression} to evaluate
  * against the provided {@link EvaluationContext}.
  * <p>
- * If the evaluation passes the provided {@link Outcome} will be returned.
+ * If the evaluation passes the provided type will be returned.
  * </p>
  * @author <a href="mailto:e.sarbanis@gmail.com">Efthymios Sarmpanis</a>
  */
@@ -39,10 +39,10 @@ public class Rule<T> {
   /**
    * Constructs a {@link Rule} with a given
    * {@link Expression} chain and a given
-   * {@link Outcome}
+   * type
    *
    * @param ruleExpression A {@link Expression} to be evaluated
-   * @param outcome THe {@link Outcome} to be returned if this rule holds.
+   * @param outcome The type to be returned if this rule holds.
    */
   public Rule(Expression ruleExpression, T outcome) {
     this.ruleExpression = ruleExpression;
@@ -52,7 +52,7 @@ public class Rule<T> {
   /**
    * Will run the {@link EvaluationContext} against the
    * {@link Expression} and will return the provided
-   * {@link Outcome} in case it's evaluated successfully.
+   * type in case it's evaluated successfully.
    * 
    * @param context The context to be evaluated
    * @return The outcome of the evaluation
