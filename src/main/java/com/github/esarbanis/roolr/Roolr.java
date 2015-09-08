@@ -51,20 +51,15 @@ public class Roolr<T> {
    * @throws EvaluationException Thrown when the evaluation has failed, wrapping the original exception.
    */
   public T decide(EvaluationContext context) throws EvaluationException {
-    T outcome = null;
-    for (Rule<T> rule : rules) {
-      try {
-        if ((outcome = rule.apply(context)) != null) {
-          break;
-        }
-      } catch (Exception e) {
+    try {
+        return rules
+                .stream()
+                .map((Rule<T> rule) -> rule.apply(context))
+                .filter((T t) -> t != null)
+                .findFirst()
+                .orElse(defaultOutcome);
+    } catch (Exception e) {
         throw new EvaluationException("Cannot make a decision. There was an error.", e);
-      }
     }
-    if (outcome == null) {
-      outcome = defaultOutcome;
-    }
-    return outcome;
   }
-
 }
