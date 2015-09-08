@@ -68,11 +68,11 @@
     </distributionManagement>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <java.version>1.7</java.version>
+        <java.version>1.8</java.version>
 
         <version.junit>4.11</version.junit>
 
-        <version.maven-checkstyle-plugin>2.14</version.maven-checkstyle-plugin>
+        <version.maven-checkstyle-plugin>2.16</version.maven-checkstyle-plugin>
         <version.maven-compiler-plugin>2.3.2</version.maven-compiler-plugin>
         <version.maven-sortpom-plugin>2.3.0</version.maven-sortpom-plugin>
         <version.maven-source-plugin>2.2.1</version.maven-source-plugin>
@@ -130,6 +130,13 @@
                         </configuration>
                     </execution>
                 </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.puppycrawl.tools</groupId>
+                        <artifactId>checkstyle</artifactId>
+                        <version>6.10.1</version>
+                    </dependency>
+                </dependencies>
             </plugin>
             <plugin>
                 <groupId>com.google.code.sortpom</groupId>

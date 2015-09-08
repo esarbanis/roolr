@@ -20,7 +20,8 @@
  */
 
 /**
- * This package contains all {@link com.github.esarbanis.roolr.expression.Expression} implementations.
+ * This package contains all {@link com.github.esarbanis.roolr.expression.Expression}
+ * implementations.
  * @author <a href="mailto:e.sarbanis@gmail.com">Efthymios Sarmpanis</a>
  */
 package com.github.esarbanis.roolr.expression;

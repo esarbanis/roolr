@@ -48,8 +48,9 @@ public abstract class Operator implements Expression {
     public boolean evaluate(EvaluationContext context) {
         Value fieldValue = resolveValue(context.getField(fieldName));
         if (!fieldValue.getClass().equals(comparisonValue.getClass())) {
-            throw new IllegalArgumentException(String.format("Cannot compare %s with %s", fieldValue.getClass()
-                    .getSimpleName(), comparisonValue.getClass().getSimpleName()));
+            throw new IllegalArgumentException(String.format("Cannot compare %s with %s",
+                    fieldValue.getClass().getSimpleName(),
+                    comparisonValue.getClass().getSimpleName()));
         }
         return doEvaluate(fieldValue.compareTo(comparisonValue));
     }

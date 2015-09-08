@@ -25,8 +25,8 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * An array value wrapper used when evaluating a {@link com.github.esarbanis.roolr.expression.Expression
- * expression}.
+ * An array value wrapper used when evaluating a
+ * {@link com.github.esarbanis.roolr.expression.Expression expression}.
  *
  * @author <a href="mailto:e.sarbanis@gmail.com">Efthymios Sarmpanis</a>
  */
